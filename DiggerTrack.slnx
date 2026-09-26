@@ -1,0 +1,5 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DiggerTrack.App/DiggerTrack.App.csproj" />
+  </Folder>
+</Solution>
