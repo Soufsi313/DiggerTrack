@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8" ?>
+
+<!--
+    Navigation principale de DiggerTrack.
+
+    Shell centralise la navigation entre les grandes sections :
+    - Accueil
+    - Favoris
+    - Alertes
+    - Paramètres
+
+    Nous utilisons une TabBar afin d'obtenir une navigation
+    permanente et simple à utiliser.
+-->
+
 <Shell
     x:Class="DiggerTrack.App.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:DiggerTrack.App"
-    Title="DiggerTrack.App">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    Shell.BackgroundColor="#151515"
+    Shell.ForegroundColor="White"
+    Shell.TitleColor="White"
+
+    Shell.TabBarBackgroundColor="#151515"
+    Shell.TabBarForegroundColor="#D4AF37"
+    Shell.TabBarUnselectedColor="#777777"
+    Shell.TabBarTitleColor="#D4AF37">
+
+    <TabBar>
+
+        <!-- Accueil -->
+        <ShellContent
+            Title="Accueil"
+            Route="home"
+            ContentTemplate="{DataTemplate local:MainPage}" />
+
+        <!-- Produits favoris -->
+        <ShellContent
+            Title="Favoris"
+            Route="favorites"
+            ContentTemplate="{DataTemplate local:FavoritesPage}" />
+
+        <!-- Alertes de prix -->
+        <ShellContent
+            Title="Alertes"
+            Route="alerts"
+            ContentTemplate="{DataTemplate local:AlertsPage}" />
+
+        <!-- Paramètres -->
+        <ShellContent
+            Title="Paramètres"
+            Route="settings"
+            ContentTemplate="{DataTemplate local:SettingsPage}" />
+
+    </TabBar>
 
 </Shell>

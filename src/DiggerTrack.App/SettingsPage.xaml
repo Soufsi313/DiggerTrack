@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<!--
+    Page des paramètres de DiggerTrack.
+
+    Elle accueillera progressivement les préférences
+    générales et les options de notification.
+-->
+
+<ContentPage
+    x:Class="DiggerTrack.App.SettingsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Paramètres"
+    BackgroundColor="#0D0D0D">
+
+    <ScrollView>
+
+        <VerticalStackLayout
+            MaximumWidthRequest="800"
+            HorizontalOptions="Center"
+            Padding="40"
+            Spacing="25">
+
+            <Label
+                Text="Paramètres"
+                FontSize="32"
+                FontAttributes="Bold"
+                TextColor="White" />
+
+            <Label
+                Text="Personnalisez le fonctionnement de DiggerTrack."
+                FontSize="16"
+                TextColor="#BDBDBD" />
+
+            <Border
+                Padding="20"
+                BackgroundColor="#181818"
+                Stroke="#333333"
+                StrokeThickness="1">
+
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="12" />
+                </Border.StrokeShape>
+
+                <VerticalStackLayout Spacing="20">
+
+                    <Label
+                        Text="Notifications"
+                        FontSize="20"
+                        FontAttributes="Bold"
+                        TextColor="#D4AF37" />
+
+                    <Grid ColumnDefinitions="*,Auto">
+
+                        <VerticalStackLayout Grid.Column="0">
+
+                            <Label
+                                Text="Notifications Windows"
+                                FontSize="16"
+                                TextColor="White" />
+
+                            <Label
+                                Text="Recevoir les alertes directement sur votre ordinateur."
+                                FontSize="13"
+                                TextColor="#888888" />
+
+                        </VerticalStackLayout>
+
+                        <Switch
+                            Grid.Column="1"
+                            IsToggled="True"
+                            VerticalOptions="Center" />
+
+                    </Grid>
+
+                </VerticalStackLayout>
+
+            </Border>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>
