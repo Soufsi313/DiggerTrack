@@ -4,68 +4,80 @@ using DiggerTrack.App.Models;
 namespace DiggerTrack.App.ViewModels;
 
 /// <summary>
-/// ViewModel responsable des données affichées
-/// sur la page des favoris de DiggerTrack.
+/// ViewModel responsable des produits favoris affichés
+/// dans la page Favoris de DiggerTrack.
 ///
-/// Il fait le lien entre l'interface FavoritesPage
-/// et les produits suivis par l'utilisateur.
+/// Un favori représente désormais un Product unique.
+/// Chaque Product peut contenir plusieurs offres provenant
+/// de différentes boutiques via sa collection Offers.
 /// </summary>
 public class FavoritesViewModel
 {
     /// <summary>
-    /// Liste observable des produits favoris.
+    /// Collection des produits favoris de l'utilisateur.
     ///
-    /// ObservableCollection permet à l'interface MAUI
-    /// d'être automatiquement informée lorsqu'un produit
-    /// est ajouté ou supprimé de la collection.
+    /// Un produit n'apparaît qu'une seule fois dans cette collection,
+    /// même s'il est suivi sur plusieurs boutiques.
     /// </summary>
-    public ObservableCollection<TrackedProduct> Products { get; }
+    public ObservableCollection<Product> Products { get; }
 
     /// <summary>
     /// Initialise le ViewModel des favoris.
     ///
-    /// Pour le moment, nous utilisons des produits
-    /// de démonstration afin de construire et tester
-    /// l'interface avant l'arrivée de la base de données.
+    /// Les données utilisées actuellement sont fictives et servent
+    /// uniquement à tester l'architecture et l'interface.
+    /// Elles seront remplacées plus tard par de véritables données.
     /// </summary>
     public FavoritesViewModel()
     {
-        Products = new ObservableCollection<TrackedProduct>
+        Products = new ObservableCollection<Product>
         {
             new()
             {
                 Name = "The Elder Scrolls IV: Oblivion Remastered",
-                StoreName = "Steam",
-                ProductUrl = string.Empty,
-                OriginalPrice = 54.99m,
-                CurrentPrice = 41.24m,
-                Currency = "EUR",
-                LastCheckedAt = DateTime.Now,
-                IsFavorite = true
-            },
 
-            new()
-            {
-                Name = "The Elder Scrolls IV: Oblivion Remastered",
-                StoreName = "Instant Gaming",
-                ProductUrl = string.Empty,
-                OriginalPrice = 54.99m,
-                CurrentPrice = 36.99m,
-                Currency = "EUR",
-                LastCheckedAt = DateTime.Now,
-                IsFavorite = true
-            },
+                Description =
+                    "Produit de démonstration utilisé pour tester " +
+                    "le suivi multiboutique de DiggerTrack.",
 
-            new()
-            {
-                Name = "The Elder Scrolls IV: Oblivion Remastered",
-                StoreName = "Amazon",
-                ProductUrl = string.Empty,
-                OriginalPrice = 54.99m,
-                CurrentPrice = 49.99m,
-                Currency = "EUR",
-                LastCheckedAt = DateTime.Now,
-                IsFavorite = true
+                Category = "Jeu vidéo",
+
+                IsFavorite = true,
+
+                // Un seul produit peut être surveillé
+                // simultanément auprès de plusieurs boutiques.
+                Offers =
+                [
+                    new StoreOffer
+                    {
+                        StoreName = "Steam",
+                        ProductUrl = string.Empty,
+                        OriginalPrice = 54.99m,
+                        CurrentPrice = 41.24m,
+                        Currency = "EUR",
+                        LastCheckedAt = DateTime.Now
+                    },
+
+                    new StoreOffer
+                    {
+                        StoreName = "Instant Gaming",
+                        ProductUrl = string.Empty,
+                        OriginalPrice = 54.99m,
+                        CurrentPrice = 36.99m,
+                        Currency = "EUR",
+                        LastCheckedAt = DateTime.Now
+                    },
+
+                    new StoreOffer
+                    {
+                        StoreName = "Amazon",
+                        ProductUrl = string.Empty,
+                        OriginalPrice = 54.99m,
+                        CurrentPrice = 49.99m,
+                        Currency = "EUR",
+                        LastCheckedAt = DateTime.Now
+                    }
+                ]
             }
         };
     }
